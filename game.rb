@@ -15,13 +15,16 @@ class Baccarat
         sleep 0.25
     end
 
+    def valid_sides
+        ["b", "p"]
+    end
 
     def run
         puts "Welcomt to Baccarat! Press 'b' for banker and 'p' for player"
         sleep_and_clear
-        bet = wager.choose_side
-        if bet == "b"
-            banker.draw_card
+        side = wager.choose_side
+        raise "must choose 'b' or 'p'" if !valid_sides.include?(side)
+
         
     end
 
