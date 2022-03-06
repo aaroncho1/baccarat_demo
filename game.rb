@@ -37,6 +37,11 @@ class Baccarat
         player_banker_draw_cards if player.score >= 8 || banker.score >= 8
     end
 
+    def winner 
+        winning_side = player.score > banker.score ? player : banker
+        winning_side
+    end
+
     def run
         puts "Welcomt to Baccarat! Press 'b' for banker and 'p' for player"
         sleep_and_clear
