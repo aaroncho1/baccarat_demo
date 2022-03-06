@@ -6,7 +6,7 @@ attr_reader :wager
 
 class Baccarat
     def initialize(banker, player, wager)
-        @banker, @player, @gambler
+        @banker, @player, @wager = banker, player, wager
     end
 
     def sleep_and_clear
