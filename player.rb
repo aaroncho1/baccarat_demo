@@ -9,4 +9,11 @@ class Player
         ([:queen] * 4) + ([:king] * 4)
     end
 
+    def draw_card
+        i = rand(52)
+        card = @cards.shuffle[i]
+        @cards.delete(card)
+        card
+    end
+
 end

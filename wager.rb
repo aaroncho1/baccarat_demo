@@ -7,4 +7,9 @@ class Wager
         @balance, @budget = balance, budget
     end
 
+    def choose_side
+        side = gets.chomp
+        side
+    end
+
 end

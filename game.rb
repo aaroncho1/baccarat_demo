@@ -2,7 +2,7 @@ require_relative "player"
 require_relative "banker"
 require_relative "wager"
 
-attr_reader :wager
+attr_reader :wager, :banker, :player
 
 class Baccarat
     def initialize(banker, player, wager)
@@ -19,7 +19,9 @@ class Baccarat
     def run
         puts "Welcomt to Baccarat! Press 'b' for banker and 'p' for player"
         sleep_and_clear
-        wager.choose_side
+        bet = wager.choose_side
+        if bet == "b"
+            banker.draw_card
         
     end
 
