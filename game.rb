@@ -1,4 +1,5 @@
-require_relative "cards"
+require_relative "player"
+require_relative "banker"
 require_relative "wager"
 
 attr_reader :wager
