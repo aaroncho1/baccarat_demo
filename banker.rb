@@ -1,5 +1,7 @@
 class Banker  
 
+    attr_accessor :cards
+
     def initialize
         @cards = ([:ace] * 4) + ([:two] * 4) + ([:three] * 4) + 
         ([:four] * 4) + ([:five] * 4) + ([:six] * 4) + ([:seven] * 4) + 
