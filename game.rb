@@ -21,11 +21,20 @@ class Baccarat
         ["b", "p"]
     end
 
-    def deal
-        card = player.draw_card
-        player.drawn_cards << card 
-        player.score += @stack[card]
+    def player_banker_draw_cards
+        player_card = player.draw_card
+        player.drawn_cards << player_card 
+        player.score += @stack[player_card]
+        banker_card = banker.draw_card
+        banker.drawn_cards << banker_card
+        banker.score += @stack[banker_card]
+    end
 
+    def deal
+        2.times do 
+            player_banker_draw_cards
+        end
+        player_banker_draw_cards if player.score >= 8 || banker.score >= 8
     end
 
     def run
