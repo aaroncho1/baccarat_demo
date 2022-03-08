@@ -34,7 +34,7 @@ class Baccarat
         player_banker_draw_cards if player.real_score < 8 || banker.real_score < 8
     end
 
-    def winner 
+    def result 
         if player.score > banker.score
             "p"
         elsif banker.score > player.score
@@ -45,11 +45,11 @@ class Baccarat
     end
 
     def tie?
-        winner == "t"
+        result == "t"
     end
 
     def settle_wager(risk_amount, side)
-        if side == winner
+        if side == result
             wager.balance += risk_amount
             puts "bet won"
         else
