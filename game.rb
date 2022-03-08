@@ -50,14 +50,15 @@ class Baccarat
         puts "Welcomt to Baccarat! Press 'b' for banker and 'p' for player"
         sleep_and_clear
         risk = wager.risk_amount
-        side = wager.choose_side
-        raise "must choose 'b' or 'p'" if !valid_sides.include?(side)
+        begin
+            side = wager.choose_side
+            raise "must choose 'b' or 'p'" if !valid_sides.include?(side)
+        rescue => e    
+            puts e.message
+            retry
+        end
         deal
         settle_wager(risk, side)
-
-
-
-        
     end
 
 
