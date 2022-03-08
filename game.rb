@@ -34,16 +34,28 @@ class Baccarat
     end
 
     def winner 
-        winning_side = player.score > banker.score ? player : banker
+        winning_side = player.score > banker.score ? "p" : "b"
         winning_side
+    end
+
+    def settle_wager(risk_amount, side)
+        if side == winner
+            wager.balance += risk_amount
+        else
+            wager.balance -= risk_amount
+        end
     end
 
     def run
         puts "Welcomt to Baccarat! Press 'b' for banker and 'p' for player"
         sleep_and_clear
+        risk = wager.risk_amount
         side = wager.choose_side
         raise "must choose 'b' or 'p'" if !valid_sides.include?(side)
         deal
+        settle_wager(risk, side)
+
+
 
         
     end

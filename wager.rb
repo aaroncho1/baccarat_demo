@@ -1,16 +1,20 @@
 class Wager  
+    attr_reader :name
+    attr_accessor :balance
 
-    attr_accessor :balance, :budget
-
-    attr_accessor :balance, :budget
-    def initialize(name, balance, budget)
-        @name = name
-        @balance, @budget = balance, budget
+    def initialize(name, balance)
+        @name, @balance = name, balance
     end
 
     def choose_side
         side = gets.chomp
         side
     end
+
+    def risk_amount
+        amount = gets.chomp.to_i
+        amount  
+    end
+
 
 end
