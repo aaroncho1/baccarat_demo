@@ -15,12 +15,10 @@ class Banker
     end
 
     def draw_card
-        i = rand(52)
-        card = @cards.shuffle[i]
+        card = @cards.shuffle.pop
         puts "#{card}"
-        @cards.delete(card)
-        drawn_cards << banker_card
-        score += @stack[banker_card]
+        drawn_cards << card 
+        score += @stack[card]
         card
     end
 
