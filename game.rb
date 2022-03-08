@@ -3,12 +3,14 @@ require_relative "banker"
 require_relative "wager"
 
 attr_reader :wager, :banker, :player
+attr_accessor :game_over
 
 class Baccarat
     def initialize(banker, player, wager)
         @banker, @player, @wager = banker, player, wager
         @stack = {ace: 1, two: 2, three: 3, four: 4, five: 5, six: 6, 
         seven: 7, eight: 8, nine: 9, ten: 10, jack: 10, queen: 10, king: 10}
+        @game_over = false
     end
 
     def sleep_and_clear
@@ -48,20 +50,34 @@ class Baccarat
         end
     end
 
-    def run
-        puts "Welcomt to Baccarat! Press 'b' for banker and 'p' for player"
-        sleep_and_clear
-        risk = wager.risk_amount
-        begin
-            side = wager.choose_side
-            raise "must choose 'b' or 'p'" if !valid_sides.include?(side)
-        rescue => e    
-            puts e.message
-            retry
+    def replay?
+        puts "bet again? (y/n)"
+        rebet = gets.chomp
+        if rebet == "n"
+            @game_over = true
         end
-        deal
-        settle_wager(risk, side)
     end
 
+    def game_over_message
+        puts "Game over. Your remaining balance is #{wager.balance}"
+    end
 
+    def run
+        puts "Welcomt to Baccarat! Press 'b' for banker and 'p' for player"
+        until game_over
+            sleep_and_clear
+            risk = wager.risk_amount
+            begin
+                side = wager.choose_side
+                raise "must choose 'b' or 'p'" if !valid_sides.include?(side)
+            rescue => e    
+                puts e.message
+                retry
+            end
+            deal
+            settle_wager(risk, side)
+            replay?
+        end
+        game_over_message
+    end
 end
