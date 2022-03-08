@@ -3,10 +3,10 @@ require_relative "banker"
 require_relative "wager"
 require 'byebug'
 
-attr_reader :wager, :banker, :player
-attr_accessor :game_over
-
 class Baccarat
+    attr_reader :wager, :banker, :player
+    attr_accessor :game_over
+
     def initialize(banker, player, wager)
         @banker, @player, @wager = banker, player, wager
         @stack = {ace: 1, two: 2, three: 3, four: 4, five: 5, six: 6, 
@@ -84,4 +84,4 @@ class Baccarat
     end
 end
 
-Game.new((Banker.new("banker")), (Player.new("player")), Wager.new("Aaron", 0))).run
+Baccarat.new((Banker.new("banker")), (Player.new("player")), Wager.new("Aaron", 0)).run
