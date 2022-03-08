@@ -65,7 +65,7 @@ class Baccarat
 
     def run
         debugger
-        puts "Welcomt to Baccarat! Press 'b' for banker and 'p' for player"
+        puts "Welcome to Baccarat! Press 'b' for banker and 'p' for player"
         until game_over
             sleep_and_clear
             risk = wager.risk_amount
