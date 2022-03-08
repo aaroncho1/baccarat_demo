@@ -1,7 +1,7 @@
 require_relative "player"
 require_relative "banker"
 require_relative "wager"
-require 'byebug'
+# require 'byebug'
 
 class Baccarat
     attr_reader :wager, :banker, :player
@@ -71,7 +71,7 @@ class Baccarat
     end
 
     def run
-        debugger
+        # debugger
         puts "Welcome to Baccarat! Press 'b' for banker and 'p' for player"
         until game_over
             sleep_and_clear
