@@ -7,11 +7,13 @@ class Wager
     end
 
     def choose_side
+        "Enter 'p' for player or 'b' for banker:"
         side = gets.chomp
         side
     end
 
     def risk_amount
+        puts "Enter your risk amount:"
         amount = gets.chomp.to_i
         amount  
     end
