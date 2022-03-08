@@ -35,8 +35,17 @@ class Baccarat
     end
 
     def winner 
-        winning_side = player.score > banker.score ? "p" : "b"
-        winning_side
+        if player.score > banker.score
+            "p"
+        elsif banker.score > player.score
+            "b"
+        else
+            "t"
+        end
+    end
+
+    def tie?
+        winner == "t"
     end
 
     def settle_wager(risk_amount, side)
@@ -45,7 +54,7 @@ class Baccarat
             puts "bet won"
         else
             wager.balance -= risk_amount
-            puts "bet lost"
+            puts "bet lost" unless tie?
         end
     end
 
@@ -76,6 +85,7 @@ class Baccarat
             end
             deal
             settle_wager(risk, side)
+            puts "It's a tie!" if tie?
             replay?
         end
         game_over_message
