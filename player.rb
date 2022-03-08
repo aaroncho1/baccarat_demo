@@ -15,6 +15,7 @@ class Player
     def draw_card
         i = rand(52)
         card = @cards.shuffle[i]
+        puts "#{card}"
         @cards.delete(card)
         drawn_cards << player_card 
         score += @stack[player_card]
