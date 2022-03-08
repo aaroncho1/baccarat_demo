@@ -31,7 +31,7 @@ class Baccarat
         2.times do 
             player_banker_draw_cards
         end
-        player_banker_draw_cards if player.score >= 8 || banker.score >= 8
+        player_banker_draw_cards if player.real_score >= 8 || banker.real_score >= 8
     end
 
     def winner 
