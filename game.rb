@@ -82,4 +82,4 @@ class Baccarat
     end
 end
 
-Baccarat.new((Banker.new("banker")), (Player.new("player")), Wager.new("Aaron", 0)).run
+Baccarat.new((Banker.new("banker", 0)), (Player.new("player", 0)), Wager.new("Aaron", 0)).run
