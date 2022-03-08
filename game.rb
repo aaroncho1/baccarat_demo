@@ -41,8 +41,10 @@ class Baccarat
     def settle_wager(risk_amount, side)
         if side == winner
             wager.balance += risk_amount
+            puts "bet won"
         else
             wager.balance -= risk_amount
+            puts "bet lost"
         end
     end
 
