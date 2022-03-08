@@ -22,5 +22,17 @@ class Player
         card
     end
 
+    def last_digit(number)
+        number = self.score
+        num_arr = (number.to_s.split("")).to_a
+        num_arr.last
+    end
+
+    def real_score
+        num = self.score
+        digit = last_digit(num)
+        digit
+    end
 end
+
 
