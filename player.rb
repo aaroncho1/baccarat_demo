@@ -25,7 +25,7 @@ class Player
     def last_digit(number)
         number = self.score
         num_arr = (number.to_s.split("")).to_a
-        num_arr.last
+        num_arr.last.to_i
     end
 
     def real_score
