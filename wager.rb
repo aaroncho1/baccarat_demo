@@ -17,6 +17,5 @@ class Wager
         amount = gets.chomp.to_i
         amount  
     end
-
-
 end
+
