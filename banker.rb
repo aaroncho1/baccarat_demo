@@ -2,7 +2,7 @@ class Banker
 
     attr_accessor :cards, :drawn_cards, :score
 
-    def initialize(name, drawn_cards, score)
+    def initialize(name)
         @name = name
         @cards = ([:ace] * 4) + ([:two] * 4) + ([:three] * 4) + 
         ([:four] * 4) + ([:five] * 4) + ([:six] * 4) + ([:seven] * 4) + 

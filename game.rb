@@ -81,3 +81,4 @@ class Baccarat
         game_over_message
     end
 end
+
