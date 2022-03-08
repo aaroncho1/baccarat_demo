@@ -16,6 +16,8 @@ class Banker
         i = rand(52)
         card = @cards.shuffle[i]
         @cards.delete(card)
+        drawn_cards << banker_card
+        score += @stack[banker_card]
         card
     end
 

@@ -23,11 +23,7 @@ class Baccarat
 
     def player_banker_draw_cards
         player_card = player.draw_card
-        player.drawn_cards << player_card 
-        player.score += @stack[player_card]
         banker_card = banker.draw_card
-        banker.drawn_cards << banker_card
-        banker.score += @stack[banker_card]
     end
 
     def deal
