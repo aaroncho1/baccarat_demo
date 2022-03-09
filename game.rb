@@ -47,8 +47,10 @@ class Baccarat
             wager.balance += risk_amount
             puts "bet won"
         else
-            wager.balance -= risk_amount
-            puts "bet lost" unless tie?
+            unless tie?
+                wager.balance -= risk_amount
+                puts "bet lost" 
+            end
         end
     end
 
@@ -61,17 +63,16 @@ class Baccarat
     end
 
     def game_over_message
-        puts "Game over. Your remaining balance is #{wager.balance}"
+        puts "Game over. Your cashout balance is $#{wager.balance}"
     end
 
     def run
         # debugger
-        puts "Welcome to Baccarat! Press 'b' for banker and 'p' for player"
-        sleep 1.75
+        puts "Welcome to Baccarat!"
         until game_over
             system("clear")
-            risk = wager.risk_amount
             begin
+                risk = wager.risk_amount
                 side = wager.choose_side
                 raise "must choose 'b' or 'p'" if !valid_sides.include?(side)
             rescue => e    

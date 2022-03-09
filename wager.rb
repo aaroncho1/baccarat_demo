@@ -14,7 +14,7 @@ class Wager
 
     def risk_amount
         puts "Enter your risk amount:"
-        amount = gets.chomp.to_i
+        amount = gets.chomp.to_f
         amount  
     end
 end
