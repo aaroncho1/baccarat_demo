@@ -92,7 +92,7 @@ class Baccarat
         # debugger
         system("clear")
         puts "Welcome to Baccarat!"
-        # sleep 1.5
+        sleep 1.5
         until game_over
             system("clear")
             begin
@@ -109,6 +109,7 @@ class Baccarat
             render
             settle_wager(risk, side)
             puts "It's a tie!" if tie?
+            puts "New bankroll: #{wager.balance}"
             replay?
             game_reset
         end
