@@ -1,7 +1,7 @@
 require_relative "player"
 require_relative "banker"
 require_relative "wager"
-# require 'byebug'
+require 'byebug'
 
 class Baccarat
     attr_reader :wager, :banker, :player
@@ -10,6 +10,7 @@ class Baccarat
     def initialize(banker, player, wager)
         @banker, @player, @wager = banker, player, wager
         @game_over = false
+        @card_outcomes = []
     end
 
     def valid_sides
@@ -18,20 +19,22 @@ class Baccarat
 
     def player_banker_draw_cards
         player_card = player.draw_card
+        @card_outcomes << player_card
         banker_card = banker.draw_card
+        @card_outcomes << banker_card
     end
 
     def deal
         2.times do 
             player_banker_draw_cards
         end
-        player_banker_draw_cards if player.real_score < 8 || banker.real_score < 8
+        player_banker_draw_cards if player.real_score < 8 && banker.real_score < 8
     end
 
     def result 
-        if player.score > banker.score
+        if player.real_score > banker.real_score
             "p"
-        elsif banker.score > player.score
+        elsif banker.real_score > player.real_score
             "b"
         else
             "t"
@@ -67,10 +70,10 @@ class Baccarat
     end
 
     def run
-        # debugger
+        debugger
         system("clear")
         puts "Welcome to Baccarat!"
-        sleep 1.5
+        # sleep 1.5
         until game_over
             system("clear")
             begin
@@ -85,8 +88,17 @@ class Baccarat
             settle_wager(risk, side)
             puts "It's a tie!" if tie?
             replay?
+            game_reset
         end
         game_over_message
+    end
+
+    def game_reset
+        player.drawn_cards = []
+        banker.drawn_cards = []
+        player.score = 0
+        banker.score = 0
+        @card_outcomes = []
     end
 end
 

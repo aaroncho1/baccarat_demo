@@ -16,7 +16,6 @@ class Banker
 
     def draw_card
         card = @cards.shuffle.pop
-        puts "#{card}"
         drawn_cards << card 
         self.score += @stack[card]
         card
