@@ -12,12 +12,6 @@ class Baccarat
         @game_over = false
     end
 
-    def sleep_and_clear
-        sleep 1.75
-        system ("clear")
-        sleep 0.25
-    end
-
     def valid_sides
         ["b", "p"]
     end
@@ -73,8 +67,9 @@ class Baccarat
     def run
         # debugger
         puts "Welcome to Baccarat! Press 'b' for banker and 'p' for player"
+        sleep 1.75
         until game_over
-            sleep_and_clear
+            system("clear")
             risk = wager.risk_amount
             begin
                 side = wager.choose_side
