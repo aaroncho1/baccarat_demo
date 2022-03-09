@@ -1,7 +1,7 @@
 require_relative "player"
 require_relative "banker"
 require_relative "wager"
-require 'byebug'
+# require 'byebug'
 
 class Baccarat
     attr_reader :wager, :banker, :player
@@ -15,6 +15,25 @@ class Baccarat
 
     def valid_sides
         ["b", "p"]
+    end
+
+    def render
+        puts "Bankroll: #{wager.balance}"
+        puts 
+        puts "PLAYER      BANKER"
+        puts "------------------"
+        @card_outcomes.each_with_index do |card, i|
+            if i.even?
+            print "#{card}"
+            sleep 1.25
+            else
+            print "          #{card}"
+            puts
+            sleep 1.25
+            end
+        end
+        puts "------------------"
+        puts "Player #{player.real_score} Banker #{banker.real_score}"
     end
 
     def player_banker_draw_cards
@@ -70,7 +89,7 @@ class Baccarat
     end
 
     def run
-        debugger
+        # debugger
         system("clear")
         puts "Welcome to Baccarat!"
         # sleep 1.5
@@ -78,13 +97,16 @@ class Baccarat
             system("clear")
             begin
                 risk = wager.risk_amount
+                puts
                 side = wager.choose_side
+                puts
                 raise "must choose 'b' or 'p'" if !valid_sides.include?(side)
             rescue => e    
                 puts e.message
                 retry
             end
             deal
+            render
             settle_wager(risk, side)
             puts "It's a tie!" if tie?
             replay?
