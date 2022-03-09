@@ -63,12 +63,14 @@ class Baccarat
     end
 
     def game_over_message
-        puts "Game over. Your cashout balance is $#{wager.balance}"
+        puts "Game over. Your cashout balance is $#{wager.balance}.00"
     end
 
     def run
         # debugger
+        system("clear")
         puts "Welcome to Baccarat!"
+        sleep 1.5
         until game_over
             system("clear")
             begin

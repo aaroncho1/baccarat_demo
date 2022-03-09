@@ -14,8 +14,10 @@ class Wager
 
     def risk_amount
         puts "Enter your risk amount:"
-        amount = gets.chomp.to_f
-        amount  
+        amount = gets.chomp
+        raise "amount should be in whole dollars" if amount.include?(".")
+        wager = amount.to_i  
+        wager
     end
 end
 
