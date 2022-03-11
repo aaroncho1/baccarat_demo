@@ -11,6 +11,7 @@ class Baccarat
         @banker, @player, @wager = banker, player, wager
         @game_over = false
         @card_outcomes = []
+        @winner_history = []
     end
 
     def valid_sides
@@ -67,17 +68,17 @@ class Baccarat
     def settle_wager(risk_amount, side)
         if side == result
             wager.balance += risk_amount
-            puts "bet won"
+            puts "Bet won"
         else
             unless tie?
                 wager.balance -= risk_amount
-                puts "bet lost" 
+                puts "Bet lost" 
             end
         end
     end
 
     def replay?
-        puts "bet again? (y/n)"
+        puts "Bet again? (y/n)"
         rebet = gets.chomp
         if rebet == "n"
             @game_over = true
@@ -109,6 +110,8 @@ class Baccarat
             render
             settle_wager(risk, side)
             puts "It's a tie!" if tie?
+            @winner_history << result
+            puts "History: #{@winner_history.join(",").upcase}"
             puts "New bankroll: #{wager.balance}"
             replay?
             game_reset

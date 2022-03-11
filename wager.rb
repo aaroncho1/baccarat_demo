@@ -16,6 +16,9 @@ class Wager
         puts "Enter your risk amount:"
         amount = gets.chomp
         raise "amount should be in whole dollars" if amount.include?(".")
+        amount.each_char do |char|
+            raise "please use only numbers" if !(0..10).to_a.join("").include?(char)
+        end    
         wager = amount.to_i  
         wager
     end
