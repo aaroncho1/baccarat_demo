@@ -102,8 +102,11 @@ class Baccarat
                 side = wager.choose_side
                 puts
                 raise "must choose 'b' or 'p'" if !valid_sides.include?(side)
-            rescue => e    
+            rescue => e
+                system("clear")    
                 puts e.message
+                sleep 1.25
+                system("clear")
                 retry
             end
             deal
