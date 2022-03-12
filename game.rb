@@ -83,6 +83,10 @@ class Baccarat
         puts "Game over. Your cashout balance is $#{wager.balance}.00"
     end
 
+    def tie_message?
+        puts "It's a tie!" if tie?
+    end
+
     def run
         system("clear")
         puts "Welcome to Baccarat!"
@@ -105,7 +109,7 @@ class Baccarat
             deal
             render
             settle_wager(risk, side)
-            puts "It's a tie!" if tie?
+            tie_message?
             @winner_history << result
             puts "History: #{@winner_history.join(",").upcase}"
             puts "New bankroll: #{wager.balance}"
