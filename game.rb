@@ -23,9 +23,14 @@ class Baccarat
         puts "PLAYER      BANKER"
         puts "------------------"
         @card_outcomes.each_with_index do |card, i|
-            print "#{card}         "
+            if i.even?
+            print "#{card}"
             sleep 1.25
-            puts if i.odd?
+            else
+            print "          #{card}"
+            puts
+            sleep 1.25
+            end
         end
         puts "------------------"
         puts "Player #{player.real_score} Banker #{banker.real_score}"
