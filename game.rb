@@ -92,6 +92,14 @@ class Baccarat
         puts "It's a tie!" if tie?
     end
 
+    def display_history
+        puts "History: #{@winner_history.join(",").upcase}"
+    end
+
+    def display_bankroll
+        puts "New bankroll: #{wager.balance}"
+    end
+
     def run
         system("clear")
         puts "Welcome to Baccarat!"
@@ -116,8 +124,8 @@ class Baccarat
             settle_wager(risk, side)
             tie_message?
             @winner_history << result
-            puts "History: #{@winner_history.join(",").upcase}"
-            puts "New bankroll: #{wager.balance}"
+            display_history
+            display_bankroll
             replay?
             game_reset
         end
